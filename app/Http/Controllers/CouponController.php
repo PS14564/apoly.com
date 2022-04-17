@@ -35,14 +35,13 @@ class CouponController extends Controller
      */
     public function store(Request $request)
     {
-        // return $request->all();
+        $data=$request->all();
         $this->validate($request,[
             'code'=>'string|required',
             'type'=>'required|in:fixed,percent',
-            'value'=>'required|numeric',
+            'value'=>'required|numeric|gt:0',
             'status'=>'required|in:active,inactive'
         ]);
-        $data=$request->all();
         $status=Coupon::create($data);
         if($status){
             request()->session()->flash('success','Coupon Successfully added');
@@ -97,7 +96,7 @@ class CouponController extends Controller
             'status'=>'required|in:active,inactive'
         ]);
         $data=$request->all();
-        
+
         $status=$coupon->fill($data)->save();
         if($status){
             request()->session()->flash('success','Coupon Successfully updated');
@@ -106,7 +105,7 @@ class CouponController extends Controller
             request()->session()->flash('error','Please try again!!');
         }
         return redirect()->route('coupon.index');
-        
+
     }
 
     /**
@@ -136,8 +135,10 @@ class CouponController extends Controller
 
     public function couponStore(Request $request){
         // return $request->all();
-        $coupon=Coupon::where('code',$request->code)->first();
-        // dd($coupon);
+        $coupon=Coupon::where([
+            ['code', $request->code],
+            ['status', 'active']
+        ])->first();
         if(!$coupon){
             request()->session()->flash('error','Invalid coupon code, Please try again');
             return back();

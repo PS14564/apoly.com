@@ -1,6 +1,6 @@
 @extends('frontend.layouts.master')
 
-@section('title','E-SHOP || Order Track Page')
+@section('title','APOLY-SHOP || Order Track Page')
 
 @section('main-content')
     <!-- Breadcrumbs -->
@@ -28,9 +28,6 @@
               @csrf
                 <div class="col-md-8 form-group">
                     <input type="text" class="form-control p-2"  name="order_number" placeholder="Enter your order number">
-                </div>
-                <div class="col-md-8 form-group">
-                    <button type="submit" value="submit" class="btn submit_btn">Track Order</button>
                 </div>
             </form>
         </div>

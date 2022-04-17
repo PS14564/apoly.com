@@ -11,17 +11,21 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
+        \DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+        \DB::table('users')->truncate();
+        \DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+
         $data=array(
             array(
                 'name'=>'Admin',
-                'email'=>'admin@gmail.com',
+                'email'=>'phamdinhhung212@gmail.com',
                 'password'=>Hash::make('1111'),
                 'role'=>'admin',
                 'status'=>'active'
             ),
             array(
                 'name'=>'User',
-                'email'=>'user@gmail.com',
+                'email'=>'phamdinhhung28.it@gmail.com',
                 'password'=>Hash::make('1111'),
                 'role'=>'user',
                 'status'=>'active'

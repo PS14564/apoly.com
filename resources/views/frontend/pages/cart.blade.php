@@ -140,6 +140,15 @@
 										@endif
 									</ul>
 									<div class="button5">
+										@if(session()->has('coupon'))
+                                        <script>
+                                            function removeCoupon() {
+                                                {{ session()->forget('coupon') }}
+                                                location.reload();
+                                            }
+                                        </script>
+                                        <a onclick="removeCoupon()" style="border-bottom: 1px solid #000; cursor: pointer;">Remove Coupon</a>
+                                        @endif
 										<a href="{{route('checkout')}}" class="btn">Checkout</a>
 										<a href="{{route('product-grids')}}" class="btn">Continue shopping</a>
 									</div>

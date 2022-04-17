@@ -50,7 +50,7 @@ class LoginController extends Controller
         // dd($provider);
      return Socialite::driver($provider)->redirect();
     }
- 
+
     public function Callback($provider)
     {
         $userSocial =   Socialite::driver($provider)->stateless()->user();
@@ -69,5 +69,11 @@ class LoginController extends Controller
             ]);
          return redirect()->route('home');
         }
+    }
+
+    public function showFormResetPassword(Request $request)
+    {
+        dd('ok');
+        // dd($request->all());
     }
 }
