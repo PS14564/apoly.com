@@ -18,7 +18,9 @@
 
         <div class="form-group">
             <label for="inputEmail" class="col-form-label">Email</label>
-          <input disabled="disabled" id="inputEmail" type="email" name="email" placeholder="Enter email"  value="{{$user->email}}" class="form-control">
+          <input disabled="disabled" id="inputEmail" type="email" placeholder="Enter email"  value="{{$user->email}}" class="form-control">
+          <input type="hidden" name="email" value="{{$user->email}}">
+
           @error('email')
           <span class="text-danger">{{$message}}</span>
           @enderror

@@ -87,9 +87,10 @@ Route::resource('/comment','PostCommentController');
 // Coupon
 Route::post('/coupon-store','CouponController@couponStore')->name('coupon-store');
 // Payment
-Route::get('payment', 'PayPalController@payment')->name('payment');
-Route::get('cancel', 'PayPalController@cancel')->name('payment.cancel');
-Route::get('payment/success', 'PayPalController@success')->name('payment.success');
+Route::get('payment', 'VnPayController@payment')->name('payment');
+Route::post('createPayment', 'VnPayController@createPayment')->name('payment.create');
+Route::get('cancel', 'VnPayController@cancel')->name('payment.cancel');
+Route::get('payment/success', 'VnPayController@success')->name('payment.success');
 
 
 
